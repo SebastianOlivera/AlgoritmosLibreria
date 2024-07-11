@@ -1,0 +1,20 @@
+Calculo Avanzado,Matematica,Juan Perez
+Fisica Moderna,Fisica,Maria Gonzalez
+Quimica Organica,Quimica,Jose Rodriguez
+Literatura Espanola,Literatura,Ana Fernandez
+Algebra Lineal,Matematica,Luis Martinez
+Fisica Cuantica,Fisica,Laura Garcia
+Quimica Inorganica,Quimica,Carlos Sanchez
+Historia de la Literatura,Literatura,Marta Romero
+Ecuaciones Diferenciales,Matematica,Jorge Alvarez
+Mecanica Clasica,Fisica,Lucia Torres
+Quimica Analitica,Quimica,Pedro Ruiz
+Teoria de Numeros,Matematica,Carmen Ramirez
+Termodinamica,Fisica,Miguel Flores
+Quimica Fisica,Quimica,Sofia Cruz
+Narrativa Contemporanea,Literatura,Francisco Ortiz
+Geometria Euclidiana,Matematica,Elena Gutierrez
+Electromagnetismo,Fisica,Fernando Silva
+Quimica de Materiales,Quimica,Isabel Castro
+Poetica Medieval,Literatura,Rafael Vargas
+Estadistica Aplicada,Matematica,Paula Lopez
