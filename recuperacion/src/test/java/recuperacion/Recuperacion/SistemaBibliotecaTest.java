@@ -24,10 +24,10 @@ public class SistemaBibliotecaTest {
         for (Libro libro : resultados) {
             System.out.println(libro);
         }
-        assertEquals("AlgebraLineal", resultados.get(0).getNombre());
-        assertEquals("AlgebraLinealI", resultados.get(1).getNombre());
-        assertEquals("AlgebraLinealII", resultados.get(2).getNombre());
-        assertEquals("AlgebraLinealIII", resultados.get(3).getNombre());
+        assertEquals("algebralineal", resultados.get(0).getNombre());
+        assertEquals("algebralineali", resultados.get(1).getNombre());
+        assertEquals("algebralinealii", resultados.get(2).getNombre());
+        assertEquals("algebralinealiii", resultados.get(3).getNombre());
         assertEquals(4, resultados.size());
     }
 
@@ -42,10 +42,10 @@ public class SistemaBibliotecaTest {
         for (Libro libro : resultados) {
             System.out.println(libro);
         }
-        assertEquals("Matematica", resultados.get(0).getCategoria());
-        assertEquals("Matematica", resultados.get(1).getCategoria());
-        assertEquals("Matematica", resultados.get(2).getCategoria());
-        assertEquals("Matematica", resultados.get(3).getCategoria());
+        assertEquals("matematica", resultados.get(0).getCategoria());
+        assertEquals("matematica", resultados.get(1).getCategoria());
+        assertEquals("matematica", resultados.get(2).getCategoria());
+        assertEquals("matematica", resultados.get(3).getCategoria());
         assertEquals(4, resultados.size());
     }
 
@@ -68,7 +68,7 @@ public class SistemaBibliotecaTest {
         boolean prestamo1 = sistema.prestarLibro("4553553", "Algebra Lineal");
         assertTrue(prestamo1);
         TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
-        assertEquals("Algebra Lineal", nodoAlumno.getDatos().getLibroPrestado());
+        assertEquals("algebralineal", nodoAlumno.getDatos().getLibroPrestado());
 
     }
 
@@ -85,6 +85,6 @@ public class SistemaBibliotecaTest {
         sistema.registrarLibro("Algebra Lineal", "Matematica", "Humberto Weiss");
         List<Libro> libros = sistema.buscarLibro("AlgebraLineal");
         assertFalse(libros.isEmpty());
-        assertEquals("AlgebraLineal", libros.get(0).getNombre());
+        assertEquals("algebralineal", libros.get(0).getNombre());
     }
 }

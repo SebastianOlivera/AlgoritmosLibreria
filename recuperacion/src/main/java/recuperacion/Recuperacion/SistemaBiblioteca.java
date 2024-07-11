@@ -1,24 +1,18 @@
 package recuperacion.Recuperacion;
 
-import java.util.HashMap;
 import java.util.List;
 import recuperacion.ArbolAVL.*;
 import recuperacion.ArbolBB.*;
 import recuperacion.Tries.*;
 import recuperacion.Util.ManejadorArchivosGenerico;
 
-
 public class SistemaBiblioteca {
     private TArbolAVL<Alumno> arbolAlumnos;
     private TArbolTrie trieLibros;
-    private HashMap<String, Libro> diccionarioLibros;
-    private HashMap<String, String> prestamos;
 
     public SistemaBiblioteca() {
         this.arbolAlumnos = new TArbolAVL<>();
         this.trieLibros = new TArbolTrie();
-        this.diccionarioLibros = new HashMap<>();
-        this.prestamos = new HashMap<>();
     }
 
     public void registrarAlumno(String cedula, String nombre) {
@@ -34,10 +28,9 @@ public class SistemaBiblioteca {
         String autorFiltrado = ManejadorArchivosGenerico.filtrarPalabra(autor).toLowerCase();
         Libro libro = new Libro(nombreLibroFiltrado, categoriaFiltrado, autorFiltrado);
         libro.setDisponible(true);  // Asegurar que el libro esté disponible
-        trieLibros.insertar(libro.getNombre().toLowerCase(), libro);
-        trieLibros.insertar(libro.getCategoria().toLowerCase(), libro);
-        trieLibros.insertar(libro.getAutor().toLowerCase(), libro);
-        diccionarioLibros.put(nombreLibroFiltrado, libro);
+        trieLibros.insertar(libro.getNombre(), libro);
+        trieLibros.insertar(libro.getCategoria(), libro);
+        trieLibros.insertar(libro.getAutor(), libro);
         System.out.println("Registrado libro: " + nombreLibro);
     }
 
@@ -49,18 +42,22 @@ public class SistemaBiblioteca {
             Alumno alumno = nodoAlumno.getDatos();
             System.out.println("Alumno encontrado: " + alumno.getNombre());
             if (alumno.getLibroPrestado() == null) {
-                Libro libro = diccionarioLibros.get(nombreLibroFiltrado);
-                if (libro != null && libro.isDisponible()) {
-                    alumno.setLibroPrestado(nombreLibroFiltrado);
-                    libro.setDisponible(false);
-                    prestamos.put(nombreLibroFiltrado, cedula);
-                    System.out.println("Libro prestado: " + libro.getNombre() + " a " + alumno.getNombre());
-                    return true;
+                List<Libro> libros = trieLibros.buscar(nombreLibroFiltrado);
+                if (!libros.isEmpty()) {
+                    Libro libro = libros.get(0);
+                    if (libro.isDisponible()) {
+                        alumno.setLibroPrestado(nombreLibroFiltrado);
+                        libro.setDisponible(false);
+                        System.out.println("Libro prestado: " + libro.getNombre() + " a " + alumno.getNombre());
+                        return true;
+                    } else {
+                        System.out.println("Libro no disponible: " + nombreLibro);
+                    }
                 } else {
-                    System.out.println("Libro no disponible: " + nombreLibro);
+                    System.out.println("Libro no encontrado: " + nombreLibro);
                 }
             } else {
-                System.out.println("Alumno ya tiene un libro prestado: " + "ID = "+alumno.getLibroPrestado());
+                System.out.println("Alumno ya tiene un libro prestado: " + "ID = " + alumno.getLibroPrestado());
             }
         } else {
             System.out.println("Alumno no encontrado: " + cedula);
@@ -76,11 +73,11 @@ public class SistemaBiblioteca {
             System.out.println("Alumno encontrado: " + alumno.getNombre());
             if (alumno.getLibroPrestado() != null) {
                 String nombreLibro = alumno.getLibroPrestado();
-                Libro libro = diccionarioLibros.get(nombreLibro);
-                if (libro != null) {
+                List<Libro> libros = trieLibros.buscar(nombreLibro);
+                if (!libros.isEmpty()) {
+                    Libro libro = libros.get(0);
                     alumno.setLibroPrestado(null);
                     libro.setDisponible(true);
-                    prestamos.remove(nombreLibro);
                     System.out.println("Libro devuelto: " + nombreLibro + " por " + alumno.getNombre());
                     return true;
                 }
@@ -97,9 +94,12 @@ public class SistemaBiblioteca {
         return arbolAlumnos;
     }
 
-    public List<Libro> buscarLibro(String criterio) {
-        return trieLibros.buscar(criterio.toLowerCase());
+    public TArbolTrie getTrieLibros() {
+        return trieLibros;
     }
 
-    
+    public List<Libro> buscarLibro(String criterio) {
+        String criteriofiltrado = ManejadorArchivosGenerico.filtrarPalabra(criterio).toLowerCase();
+        return trieLibros.buscar(criteriofiltrado);
+    }
 }

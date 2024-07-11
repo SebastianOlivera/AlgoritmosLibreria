@@ -24,7 +24,6 @@ public class TNodoTrie implements INodoTrie {
         for (int c = 0; c < unaPalabra.length(); c++) {
             int indice = getIndice(unaPalabra.charAt(c));
             if ((indice < 0) || indice >= CANT_CHR_ABECEDARIO) {
-                System.out.println(indice);
                 throw new IllegalArgumentException("Caracter inválido en la palabra: " + unaPalabra.charAt(c));
             }
             if (nodo.hijos[indice] == null) {

@@ -68,14 +68,14 @@ public class Main {
 
         System.out.println("<<< ---------------------- [ BUSQUEDA ] ---------------------- >>>");
         // Realizar búsquedas
-        String busqueda = "Est";
+        String busqueda = "Estructuras De";
         // Buscar libro
         List<Libro> resultados = sistema.buscarLibro(busqueda);
         System.out.println("Resultados de la busqueda para: " + busqueda);
         for (Libro libro : resultados) {
             System.out.println(libro);
         }
-
+        // Prestar libro a alumno nuevo
         System.out.println("<<< ---------------------- [ PRESTAMO ALUMNO NUEVO LIBRO ] ---------------------- >>>");
         boolean prestamo8 = sistema.prestarLibro("93847561", "Estructuras De Datos Y Algoritmos");
     }
