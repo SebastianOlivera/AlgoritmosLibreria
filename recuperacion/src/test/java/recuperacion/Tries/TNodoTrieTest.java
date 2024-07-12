@@ -19,9 +19,7 @@ public class TNodoTrieTest {
     public void testInsertar() {
         Libro libro1 = new Libro("Libro1", "Autor1", "Categoría1");
         nodoTrie.insertar("palabra", libro1);
-        
         List<Libro> resultados = nodoTrie.buscar("palabra");
-        
         assertNotNull(resultados);
         assertEquals(1, resultados.size());
         assertEquals(libro1, resultados.get(0));
@@ -31,9 +29,7 @@ public class TNodoTrieTest {
     public void testInsertarConMayusculas() {
         Libro libro1 = new Libro("Libro1", "Autor1", "Categoría1");
         nodoTrie.insertar("Palabra", libro1);
-        
         List<Libro> resultados = nodoTrie.buscar("palabra");
-        
         assertNotNull(resultados);
         assertEquals(1, resultados.size());
         assertEquals(libro1, resultados.get(0));
@@ -50,9 +46,7 @@ public class TNodoTrieTest {
     public void testBuscarPalabraNoExistente() {
         Libro libro1 = new Libro("Libro1", "Autor1", "Categoría1");
         nodoTrie.insertar("existente", libro1);
-
         List<Libro> resultados = nodoTrie.buscar("noexistente");
-
         assertNotNull(resultados);
         assertTrue(resultados.isEmpty());
     }
@@ -61,12 +55,9 @@ public class TNodoTrieTest {
     public void testBuscarPrefijo() {
         Libro libro1 = new Libro("Libro1", "Autor1", "Categoría1");
         Libro libro2 = new Libro("Libro2", "Autor2", "Categoría2");
-
         nodoTrie.insertar("palabra", libro1);
         nodoTrie.insertar("palabras", libro2);
-
         List<Libro> resultados = nodoTrie.buscar("palabr");
-
         assertNotNull(resultados);
         assertEquals(2, resultados.size());
         assertTrue(resultados.contains(libro1));

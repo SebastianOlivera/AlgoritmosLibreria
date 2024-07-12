@@ -57,7 +57,6 @@ public class SistemaBibliotecaTest {
         assertTrue(devolucion1);
         TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
         assertNull(nodoAlumno.getDatos().getLibroPrestado());
-
     }
 
     @Test
@@ -68,7 +67,6 @@ public class SistemaBibliotecaTest {
         assertTrue(prestamo1);
         TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
         assertEquals("algebralineal", nodoAlumno.getDatos().getLibroPrestado());
-
     }
 
     @Test
@@ -77,8 +75,14 @@ public class SistemaBibliotecaTest {
         TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
         assertNotNull(nodoAlumno);
         assertEquals("Juan Perez", nodoAlumno.getDatos().getNombre());
-        
-
+    }
+    // TestBorrarAlumno
+    @Test
+    void testBorrarAlumno() {
+        sistema.registrarAlumno("4553553", "Juan Perez");
+        sistema.borrarAlumno("4553553");
+        TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
+        assertNull(nodoAlumno);
     }
 
     @Test
