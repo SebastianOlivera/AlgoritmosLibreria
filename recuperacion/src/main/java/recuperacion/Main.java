@@ -2,7 +2,6 @@ package recuperacion;
 
 import java.util.List;
 
-import recuperacion.ArbolBB.TElementoAB;
 import recuperacion.Recuperacion.*;
 import recuperacion.Util.ManejadorArchivosGenerico;
 
@@ -14,7 +13,7 @@ public class Main {
         System.out.println("<<< ---------------------- [ CARGAR ALUMNOS ] ---------------------- >>>");
         // Cargar Alumnos
         String[] lineasAlumnos = ManejadorArchivosGenerico
-                .leerArchivo("recuperacion\\src\\main\\java\\recuperacion\\Recuperacion\\Alumnos.txt");
+                .leerArchivo("src\\main\\java\\recuperacion\\Recuperacion\\Alumnos.txt");
         for (String linea : lineasAlumnos) {
             String[] partes = linea.split(",");
             String CI = partes[0];
@@ -23,7 +22,7 @@ public class Main {
         }
         System.out.println("<<< ---------------------- [ CARGAR LIBROS ] ---------------------- >>>");
         // Cargar Libros
-        String[] lineasLibros = ManejadorArchivosGenerico.leerArchivo("recuperacion\\src\\main\\java\\recuperacion\\Recuperacion\\Libros.txt");
+        String[] lineasLibros = ManejadorArchivosGenerico.leerArchivo("src\\main\\java\\recuperacion\\Recuperacion\\Libros.txt");
         for (String linea : lineasLibros) {
             String[] partes = linea.split(",");
             String nombreLibro =partes[0];

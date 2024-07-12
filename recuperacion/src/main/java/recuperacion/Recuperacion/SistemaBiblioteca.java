@@ -36,7 +36,7 @@ public class SistemaBiblioteca {
 
     public boolean prestarLibro(String cedula, String nombreLibro) {
         String nombreLibroFiltrado = ManejadorArchivosGenerico.filtrarPalabra(nombreLibro).toLowerCase();
-        System.out.println("Intentando prestar libro: " + nombreLibro + " a " + cedula);
+        System.out.println("Intentando prestar libro: " + nombreLibro + " a Alumno: " + cedula);
         TElementoAB<Alumno> nodoAlumno = arbolAlumnos.buscar(cedula);
         if (nodoAlumno != null) {
             Alumno alumno = nodoAlumno.getDatos();
@@ -48,7 +48,7 @@ public class SistemaBiblioteca {
                     if (libro.isDisponible()) {
                         alumno.setLibroPrestado(nombreLibroFiltrado);
                         libro.setDisponible(false);
-                        System.out.println("Libro prestado: " + libro.getNombre() + " a " + alumno.getNombre());
+                        System.out.println("Libro prestado: " + libro.getNombre() + " a Alumno: " + alumno.getNombre());
                         return true;
                     } else {
                         System.out.println("Libro no disponible: " + nombreLibro);
@@ -78,7 +78,7 @@ public class SistemaBiblioteca {
                     Libro libro = libros.get(0);
                     alumno.setLibroPrestado(null);
                     libro.setDisponible(true);
-                    System.out.println("Libro devuelto: " + nombreLibro + " por " + alumno.getNombre());
+                    System.out.println("Libro devuelto: " + nombreLibro + " por Alumno: " + alumno.getNombre());
                     return true;
                 }
             } else {
