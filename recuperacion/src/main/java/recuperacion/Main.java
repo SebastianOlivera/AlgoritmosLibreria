@@ -66,6 +66,10 @@ public class Main {
         // Agregar libros al sistema
         sistema.registrarLibro("Estructuras De Datos Y Algoritmos", "Programacion", "Mark Weiss");
 
+        // Prestar libro a alumno nuevo
+        System.out.println("<<< ---------------------- [ PRESTAMO ALUMNO NUEVO LIBRO ] ---------------------- >>>");
+        boolean prestamo8 = sistema.prestarLibro("4666566", "Estructuras De Datos Y Algoritmos");
+
         System.out.println("<<< ---------------------- [ BUSQUEDA ] ---------------------- >>>");
         // Realizar búsquedas
         String busqueda = "Estructuras De";
@@ -75,8 +79,5 @@ public class Main {
         for (Libro libro : resultados) {
             System.out.println(libro);
         }
-        // Prestar libro a alumno nuevo
-        System.out.println("<<< ---------------------- [ PRESTAMO ALUMNO NUEVO LIBRO ] ---------------------- >>>");
-        boolean prestamo8 = sistema.prestarLibro("93847561", "Estructuras De Datos Y Algoritmos");
     }
 }

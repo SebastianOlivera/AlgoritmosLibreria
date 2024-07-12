@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import recuperacion.ArbolAVL.TElementoAVL;
 import recuperacion.ArbolBB.TElementoAB;
 
 public class SistemaBibliotecaTest {
@@ -77,6 +76,8 @@ public class SistemaBibliotecaTest {
         sistema.registrarAlumno("4553553", "Juan Perez");
         TElementoAB<Alumno> nodoAlumno = sistema.getArbolAlumnos().buscar("4553553");
         assertNotNull(nodoAlumno);
+        assertEquals("Juan Perez", nodoAlumno.getDatos().getNombre());
+        
 
     }
 
