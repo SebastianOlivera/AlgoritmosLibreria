@@ -61,6 +61,14 @@ public class Main {
         // Agregar alumno al sistema
         sistema.registrarAlumno("4666566", "Bruno Olivera");
 
+        // Borrar alumno
+        System.out.println("<<< ---------------------- [ BORRAR ALUMNO] ---------------------- >>>");
+        sistema.borrarAlumno("74629356");
+
+        // Borrar alumno
+        System.out.println("<<< ---------------------- [ BORRAR ALUMNO CON LIBRO PRESTADO] ---------------------- >>>");
+        sistema.borrarAlumno("27483915");
+
         System.out.println("<<< ---------------------- [ REGISTRAR NUEVO LIBRO ] ---------------------- >>>");
         // Agregar libros al sistema
         sistema.registrarLibro("Estructuras De Datos Y Algoritmos", "Programacion", "Mark Weiss");

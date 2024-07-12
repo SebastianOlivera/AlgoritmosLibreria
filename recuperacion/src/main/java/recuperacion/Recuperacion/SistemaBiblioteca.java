@@ -22,12 +22,29 @@ public class SistemaBiblioteca {
         System.out.println("Registrado alumno: " + nombre + ", " + cedula);
     }
 
+    public void borrarAlumno(String cedula) {
+        System.out.println("Intentando borrar alumno: " + cedula);
+        TElementoAB<Alumno> nodoAlumno = arbolAlumnos.buscar(cedula);
+        if (nodoAlumno != null) {
+            Alumno alumno = nodoAlumno.getDatos();
+            System.out.println("Alumno encontrado: " + alumno.getNombre());
+            if (alumno.getLibroPrestado() == null) {
+                arbolAlumnos.eliminar(cedula);
+                System.out.println("Alumno borrado: " + alumno.getNombre());
+            } else {
+                System.out.println("Alumno tiene un libro prestado: ID = " + alumno.getLibroPrestado());
+            }
+        } else {
+            System.out.println("Alumno no encontrado: " + cedula);
+        }
+    }
+
     public void registrarLibro(String nombreLibro, String categoria, String autor) {
         String nombreLibroFiltrado = ManejadorArchivosGenerico.filtrarPalabra(nombreLibro).toLowerCase();
         String categoriaFiltrado = ManejadorArchivosGenerico.filtrarPalabra(categoria).toLowerCase();
         String autorFiltrado = ManejadorArchivosGenerico.filtrarPalabra(autor).toLowerCase();
         Libro libro = new Libro(nombreLibroFiltrado, categoriaFiltrado, autorFiltrado);
-        libro.setDisponible(true);  // Asegurar que el libro esté disponible
+        libro.setDisponible(true);
         trieLibros.insertar(libro.getNombre(), libro);
         trieLibros.insertar(libro.getCategoria(), libro);
         trieLibros.insertar(libro.getAutor(), libro);
